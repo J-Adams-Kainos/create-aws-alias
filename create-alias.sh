@@ -47,4 +47,7 @@ if [[ -f "${HOME}/.zshrc" ]]; then
 alias ${alias_chosen_name}=source ${filepath_and_name}
 
 EOF
+else
+    echo "Cannot find .zshrc file, if you're not using zsh I haven't thought that far ahead"
+    exit 1
 fi
