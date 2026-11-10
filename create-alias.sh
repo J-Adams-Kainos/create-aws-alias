@@ -17,7 +17,7 @@ set -euo pipefail
 profile_name=""
 sign_script_save_location="${HOME}/Documents/Sign-In-Scripts"
 zshrc_file_path="${HOME}/.zshrc"
-alias_chosen_name="login${profile_name}"
+alias_chosen_name=""
 
 read -p "Profile Name: " profile_name
 
@@ -33,18 +33,20 @@ else
     exit 1
 fi
 
-echo "export AWS_PROFILE_NAME=${profile_name}" >> $filepath_and_name
+echo "export AWS_PROFILE=${profile_name}" >> $filepath_and_name
 echo "aws sso login --profile ${profile_name}" >> $filepath_and_name
 
-read -p "Please choose a name for the Alias to sign into chosen profile: " alias_chose_name
+read -p "Please choose a name for the Alias to sign into chosen profile: " alias_chosen_name
 
 if [[ -f "${HOME}/.zshrc" ]]; then
     cat <<EOF >> $zshrc_file_path
+
+
 ##########
 # Alias to sign into aws for $profile_name
 ##########
 
-alias ${alias_chosen_name}=source ${filepath_and_name}
+alias ${alias_chosen_name}="source ${filepath_and_name}"
 
 EOF
 else
