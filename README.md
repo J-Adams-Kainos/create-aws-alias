@@ -17,3 +17,10 @@ You can check this at ~/.aws/config (You can use **grep profile ~/.aws/config** 
 
 
 maybe at a later date we can automate this step :)
+
+## Running script
+
+
+once it's been copied down, in directory run
+
+        > bash create-alias.sh
